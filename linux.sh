@@ -3,6 +3,7 @@
 # From PWK pdf (p. 531)
 echo "----- Find all writable files  -----"
 find / -writable -not -path "/proc/*" -not -path "/sys/fs/cgroup/*" -not -path "/dev/*" 2>/dev/null
+find / -writable 2>/dev/null
 echo ""
 
 # From PWK pdf (p. 536)
