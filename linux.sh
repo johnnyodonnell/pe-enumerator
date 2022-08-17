@@ -26,3 +26,6 @@ echo "----- \`sudo -ll\` -----"
 sudo -ll
 echo ""
 
+# Check to see which processes are owned by root
+ps auxww
+
