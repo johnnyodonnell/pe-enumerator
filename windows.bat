@@ -13,3 +13,8 @@ reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlo
 reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AltDefaultUserName
 reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AltDefaultPassword
 
+:: Find files that are writeable by low privileged users
+icacls "C:\Program Files" /t /c 2> nul | findstr "BUILTIN\\Users:.*(F) BUILTIN\\Users:.*(M) BUILTIN\\Users:.*(W) NT.AUTHORITY\\Authenticated.Users:.*(F) NT.AUTHORITY\\Authenticated.Users:.*(M) NT.AUTHORITY\\Authenticated.Users:.*(W)"
+icacls "C:\Program Files (x86)" /t /c 2> nul | findstr "BUILTIN\\Users:.*(F) BUILTIN\\Users:.*(M) BUILTIN\\Users:.*(W) NT.AUTHORITY\\Authenticated.Users:.*(F) NT.AUTHORITY\\Authenticated.Users:.*(M) NT.AUTHORITY\\Authenticated.Users:.*(W)"
+icacls "C:\Users" /t /c 2> nul | findstr "BUILTIN\\Users:.*(F) BUILTIN\\Users:.*(M) BUILTIN\\Users:.*(W) NT.AUTHORITY\\Authenticated.Users:.*(F) NT.AUTHORITY\\Authenticated.Users:.*(M) NT.AUTHORITY\\Authenticated.Users:.*(W)"
+
